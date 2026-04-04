@@ -1,0 +1,238 @@
+========================================
+SEIR-1 — WEEK 1 STUDY GUIDE
+What Identity Actually Controls
+========================================
+
+HOW TO USE THIS GUIDE
+----------------------
+Read each section. Close the document. Answer from memory.
+If you cannot answer from memory, you are not ready to move on.
+This is not a test. It is a mirror.
+
+---
+
+SECTION 1: THE BIG PICTURE
+----------------------------
+
+Core Statement (Memorize This)
+    Infrastructure decides what can exist.
+    Identity decides who is trusted.
+
+What This Means In Practice
+    You can build the most secure server in the world.
+    If identity is misconfigured, the wrong person gets in.
+    Or the right person gets locked out.
+    Either way, the infrastructure is irrelevant.
+
+Check Yourself
+    Can you explain in one sentence what identity controls?
+    Can you explain why identity is called the "control plane"?
+
+---
+
+SECTION 2: THE THREE CONCEPTS
+-------------------------------
+
+Authentication
+    What it is: Proving who you are.
+    The question it answers: Are you who you claim to be?
+    Example: You enter your password. The system confirms your identity.
+    Key point: Authentication alone does not give you access.
+
+Authorization
+    What it is: Proving what you are allowed to do.
+    The question it answers: Are you permitted to do this action?
+    Example: You are authenticated as a developer.
+             But your role only allows read access. Not write.
+    Key point: Authorization happens AFTER authentication.
+
+Trust
+    What it is: A configured relationship where one system accepts
+                identity claims from another.
+    The question it answers: Do I accept what this other system tells me about this user?
+    Example: GCP trusts Microsoft Entra ID to verify your identity.
+    Key point: Trust is not automatic. It is deliberate, configured, and fragile.
+
+Check Yourself
+    What is the difference between authentication and authorization?
+    Can you be authenticated but not authorized? Give an example.
+    What happens when trust breaks between two systems?
+
+---
+
+SECTION 3: WHY IDENTITY FAILURES ARE WORSE
+--------------------------------------------
+
+Scenario A — Infrastructure Failure
+    A server goes down.
+    Engineers see an alert.
+    They restart the server or roll back the deployment.
+    Recovery time: minutes to hours.
+    Evidence: logs, metrics, alerts.
+
+Scenario B — Identity Failure
+    An admin misconfigures a permission group.
+    Users start losing access silently.
+    No server is down. No obvious alert fires.
+    The person who needs to fix it may be locked out.
+    Recovery requires finding a trusted account that still has access.
+    Recovery time: hours to days.
+    Evidence: audit logs — if they were enabled.
+
+Why Identity Is Harder To Recover
+    Infrastructure rollback: redeploy the last known good version.
+    Identity rollback: you may have locked out the account needed to perform the rollback.
+    This is why identity changes must be slow, deliberate, and always have a recovery plan.
+
+Check Yourself
+    Why is a lockout considered an outage?
+    Why is access recovery harder than deployment rollback?
+    What would you check first if users suddenly lost access to a GCP project?
+
+---
+
+SECTION 4: BLAST RADIUS
+------------------------
+
+Definition
+    Blast radius = how much damage can occur if an identity change goes wrong.
+
+Small Blast Radius Example
+    You change permissions for one service account used by one pipeline.
+    If it breaks, one pipeline fails. Nothing else is affected.
+
+Large Blast Radius Example
+    You change permissions for an admin group.
+    Every user in that group is affected.
+    Every system those users manage is potentially affected.
+    One mistake. Organization-wide impact.
+
+The Rule
+    Before any identity change, ask:
+    "If this goes wrong, what is the maximum damage?"
+    If the answer is large — slow down, test in isolation, have a recovery plan.
+
+Check Yourself
+    A teammate wants to modify the permissions on the primary admin group
+    to fix a bug. What questions do you ask before they proceed?
+    What does least privilege have to do with blast radius?
+
+---
+
+SECTION 5: LOGS AND EVIDENCE
+------------------------------
+
+Program Mantra
+    "If it's not logged, it didn't happen."
+
+What This Means
+    In identity systems, feelings are not evidence.
+    Screenshots of a working screen are not evidence.
+    Logs are evidence.
+
+What Logs Tell You
+    Who accessed what resource
+    When the access happened
+    Whether access was granted or denied
+    What changed and who changed it
+
+Why This Matters For Identity
+    If a permissions change breaks something, the log tells you:
+    -- What changed
+    -- Who made the change
+    -- When it happened
+    Without logs, you are guessing. Guessing in identity systems is dangerous.
+
+Check Yourself
+    A junior engineer says "I fixed it, my screen looks fine."
+    What three things are wrong with that statement?
+    Where would you look to prove an identity change was made in GCP?
+
+---
+
+SECTION 6: PROGRAM MANTRAS
+----------------------------
+
+Memorize these. They will come up in every lab and every challenge.
+
+1. "Infrastructure decides what can exist. Identity decides who is trusted."
+2. "Identity changes are slow, deliberate, and high-impact."
+3. "If it's not logged, it didn't happen."
+4. "Shift left — chase failure to learn."
+5. "AI is a bounded assistant. Never the decision maker."
+
+For each mantra — can you give a real example of what happens when it is ignored?
+
+---
+
+SECTION 7: WEEK 1 ARTIFACT PREP
+---------------------------------
+
+Your deliverable: A written explanation answering this question:
+"What does identity control in a cloud system?"
+
+Your answer must cover:
+    1. The difference between authentication, authorization, and trust
+    2. Why a lockout is an outage
+    3. Why access recovery is harder than deployment rollback
+
+Before you write it, answer these out loud:
+
+Question 1
+    Explain authentication vs authorization to someone who has never worked in tech.
+    No jargon. Plain language only.
+
+Question 2
+    A developer on your team gets locked out of GCP at 3am during an incident.
+    The infrastructure is fine. The servers are running.
+    Is this an outage? Why or why not?
+
+Question 3
+    Your team just deployed bad code. They roll it back in 10 minutes.
+    Your team just misconfigured an identity policy. How is the recovery different?
+
+If you can answer all three out loud without notes,
+you are ready to write the artifact.
+
+---
+
+SECTION 8: CHALLENGE QUESTIONS
+--------------------------------
+
+These are the kinds of questions your instructor or gate script will surface.
+Answer them without looking at your notes.
+
+1. What is the control plane of a modern cloud system?
+
+2. You are asked to add a new user to an admin group.
+   What is the first question you should ask before doing it?
+
+3. Authentication succeeded but the user cannot access the resource.
+   What is the most likely cause?
+
+4. A federation configuration that worked yesterday is now broken.
+   Where do you start your investigation?
+
+5. An engineer says "I just need to quickly change this permission,
+   it will only take a second."
+   What do you say?
+
+6. What is the difference between a service account and a human account
+   in terms of identity responsibility?
+
+7. Why does this program say identity mistakes are often irreversible?
+
+---
+
+SCORING YOURSELF
+-----------------
+7/7 correct from memory — Ready for Week 2
+5-6/7 — Review sections you missed. Try again tomorrow.
+Below 5 — Re-read Week 1 notes. Do not move on yet.
+
+This program does not force anyone through.
+You earn the next week by understanding the current one.
+
+========================================
+END OF WEEK 1 STUDY GUIDE
+========================================

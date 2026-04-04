@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; color: #000; line-height: 1.6; }
+  h1 { color: #1a73e8; border-bottom: 3px solid #1a73e8; padding-bottom: 10px; font-size: 26px; }
+  h2 { color: #1a73e8; margin-top: 35px; font-size: 18px; border-left: 4px solid #1a73e8; padding-left: 10px; }
+  h3 { color: #333; margin-top: 20px; font-size: 15px; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+  td, th { border: 1px solid #ccc; padding: 8px 12px; text-align: left; font-size: 14px; }
+  th { background-color: #e8f0fe; font-weight: bold; }
+  tr:nth-child(even) { background-color: #f9f9f9; }
+  .section { margin-bottom: 40px; }
+  pre { background: #f5f5f5; padding: 14px; border-radius: 6px; font-size: 13px; overflow-x: auto; border: 1px solid #ddd; }
+  .warning { background: #fff3e0; border-left: 4px solid #ff9800; padding: 10px 15px; margin: 10px 0; border-radius: 4px; }
+  .danger  { background: #fce8e6; border-left: 4px solid #e53935; padding: 10px 15px; margin: 10px 0; border-radius: 4px; }
+  .success { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 10px 15px; margin: 10px 0; border-radius: 4px; }
+  .info    { background: #e8f0fe; border-left: 4px solid #1a73e8; padding: 10px 15px; margin: 10px 0; border-radius: 4px; }
+  .tag-done     { background: #e8f5e9; color: #2e7d32; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+  .tag-progress { background: #fff3e0; color: #e65100; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+  .tag-pending  { background: #f5f5f5; color: #999; padding: 2px 8px; border-radius: 12px; font-size: 12px; }
+  .divider { border: none; border-top: 2px solid #e0e0e0; margin: 30px 0; }
+  .subtitle { color: #666; font-size: 14px; margin-top: -10px; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<h1>📚 Claude Master Study Script</h1>
+<p class="subtitle">Kamau — DevOps & AWS Certification | Last Updated: March 22, 2026</p>
+<div class="info">📋 <strong>How to use:</strong> Copy and paste this entire document as your first message in every new Claude chat. Update all sections after every study session.</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 1: Who I Am</h2>
+<ul>
+  <li>Complete beginner in cloud and DevOps</li>
+  <li>Using a Mac (iMac)</li>
+  <li>Studying for: <strong>AWS SAA</strong> (Active), <strong>AWS AI Practitioner</strong> (Upcoming), <strong>AWS ML Associate</strong> (Upcoming)</li>
+  <li>Taking a class using Docker, Jenkins, Linux Terminal, GitHub, GCP and CI/CD pipelines</li>
+</ul>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 2: How I Like to Study</h2>
+<ul>
+  <li>Always explain things simply — assume I am a beginner</li>
+  <li>Always use my notes format (see Section 3)</li>
+  <li>After each topic offer to quiz me</li>
+  <li>Help me debug errors step by step</li>
+  <li>Keep track of what we cover each session</li>
+  <li>If I say <strong>"do the same for X"</strong> — make notes for that topic</li>
+  <li>If I say <strong>"quiz me"</strong> — quiz me on recent topics</li>
+  <li>If I say <strong>"closeout notes"</strong> — summarize the full session</li>
+  <li>If I say <strong>"update my script"</strong> — help me update this file</li>
+</ul>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 3: My Notes Format</h2>
+<pre>What is it?
+Key Services & Terms
+How it Works
+Things to Remember
+Questions I Have
+Real World Analogy</pre>
+<p>Deliver notes as both a <strong>.txt file</strong> AND an <strong>HTML file</strong>.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 4: Subject Tracker</h2>
+<p><span class="tag-done">✅ DONE</span> &nbsp; <span class="tag-progress">🔄 IN PROGRESS</span> &nbsp; <span class="tag-pending">⏳ NOT STARTED</span></p>
+
+<h3>Subject 1: AWS SAA</h3>
+<table>
+<tr><th>Topic</th><th>Status</th></tr>
+<tr><td>What is AWS & Cloud Computing</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Global Infrastructure (Regions, AZs, Edge Locations)</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>EC2 — Launching an instance</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>EC2 — Instance types and states</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>EC2 — SSH connection via Terminal</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>EC2 — IAM Role attachment</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>EC2 — Security Groups & Ports</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>EC2 — Key Pairs (.pem file)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>EC2 — Free Tier (t2.micro)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>IAM (Identity & Access Management)</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>S3 (Simple Storage Service)</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>VPC (Virtual Private Cloud)</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>RDS (Relational Database Service)</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Lambda</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Load Balancers</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Auto Scaling</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>CloudWatch</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Route 53</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>CloudFront</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+</table>
+
+<h3>Subject 2: Docker</h3>
+<table>
+<tr><th>Topic</th><th>Status</th></tr>
+<tr><td>What Docker is</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Containers vs Images</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Port mapping in Docker Desktop</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Running Jenkins in Docker</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Installing Docker on EC2</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Connecting Docker to Jenkins</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Dockerfile</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Docker Compose</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Docker Hub</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Building a custom Docker image</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Pushing image to ECR</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+</table>
+
+<h3>Subject 3: Jenkins</h3>
+<table>
+<tr><th>Topic</th><th>Status</th></tr>
+<tr><td>What Jenkins is</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>CI/CD basics</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Running Jenkins on port 8080</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Installing Jenkins on EC2</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Jenkins Nodes and Built-In Node</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Fixing Jenkins node offline error (/tmp disk space)</td><td><span class="tag-progress">🔄 In Progress</span></td></tr>
+<tr><td>Jenkins Pipeline</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Creating a Jenkins Job</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Connecting Jenkins to GitHub</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Jenkins + Docker pipeline</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Jenkins environment variables</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Jenkins credentials management</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+</table>
+
+<h3>Subject 4: Linux / Terminal</h3>
+<table>
+<tr><th>Topic</th><th>Status</th></tr>
+<tr><td>SSH into EC2 from Mac Terminal</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>sudo su (switch to root)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>systemctl commands</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>yum install (package installation)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>chmod 400 (file permissions)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>mount | grep (checking mounts)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>df -h (disk space)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>find command (finding files)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>rm -rf (removing files)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>File permissions (chmod full)</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Directory navigation (cd, ls, pwd)</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Text editors (vim, nano)</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Environment variables</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Cron jobs</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+</table>
+
+<h3>Subject 5: GitHub / CI-CD</h3>
+<table>
+<tr><th>Topic</th><th>Status</th></tr>
+<tr><td>What is GitHub</td><td><span class="tag-progress">🔄 In Progress</span></td></tr>
+<tr><td>Git basics (clone, push, pull, commit)</td><td><span class="tag-progress">🔄 In Progress</span></td></tr>
+<tr><td>Connecting GitHub to Jenkins</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>Webhooks</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>CI/CD Pipeline end to end</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>GitHub Actions</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+</table>
+
+<h3>Subject 6: GCP (Google Cloud Platform)</h3>
+<table>
+<tr><th>Topic</th><th>Status</th></tr>
+<tr><td>What GCP is vs AWS</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>GCP Console navigation</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Creating a VM on Compute Engine</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Choosing Debian OS for GCP labs</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Startup scripts (super.sh vs superA)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Allow HTTP Traffic / Port 80</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>SSH into VM via GCP SSH button</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Installing NGINX via startup script</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Debugging dpkg lock errors</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>journalctl -u google-startup-scripts</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>curl -s localhost | head</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>curl -s localhost/healthz (machine proof)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>curl -s localhost/metadata | jq (engineer proof)</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Installing jq</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Creating /healthz and /metadata endpoints manually</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>HTTPS and Load Balancing</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>GCP Networking (advanced)</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>GCP IAM and permissions</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+<tr><td>GCP Storage</td><td><span class="tag-pending">⏳ Not Started</span></td></tr>
+</table>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 5: Labs Completed</h2>
+<table>
+<tr><th>Lab</th><th>Date</th><th>Status</th></tr>
+<tr><td colspan="3"><strong>LAB 1 — EC2 + Jenkins + Docker Setup</strong></td></tr>
+<tr><td>Launched EC2 instance (t2.micro, Amazon Linux 2023)</td><td>Mar 20, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Connected via SSH using jenkins-key.pem</td><td>Mar 20, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Installed Java 17, Jenkins, Docker on EC2</td><td>Mar 20, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Connected Jenkins and Docker</td><td>Mar 20, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Attached IAM Role (JenkinsEC2Role)</td><td>Mar 20, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Verified with aws sts get-caller-identity</td><td>Mar 20, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Fix Jenkins Built-In Node offline error</td><td>—</td><td><span class="tag-progress">🔄 Pending</span></td></tr>
+<tr><td colspan="3"><strong>LAB 2 — GCP Class: VM + NGINX Intro</strong></td></tr>
+<tr><td>Navigated GCP Console, learned VM creation</td><td>Mar 20, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Learned superA script and curl testing</td><td>Mar 20, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Complete Week A homework + submit screenshots</td><td>—</td><td><span class="tag-progress">🔄 Pending</span></td></tr>
+<tr><td colspan="3"><strong>LAB 3 — GCP VM + NGINX Full Endpoint Testing</strong></td></tr>
+<tr><td>Created VM (instance-20260322-175656, Debian 12)</td><td>Mar 22, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>NGINX installed, web page live at http://EXTERNAL_IP</td><td>Mar 22, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>curl -s localhost | head → HTML ✅</td><td>Mar 22, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>curl -s localhost/healthz → OK ✅</td><td>Mar 22, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>curl -s localhost/metadata | jq → JSON ✅</td><td>Mar 22, 2026</td><td><span class="tag-done">✅ Done</span></td></tr>
+<tr><td>Screenshot outputs and submit Google Docs</td><td>—</td><td><span class="tag-progress">🔄 Pending</span></td></tr>
+</table>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 6: Errors Encountered & Fixed</h2>
+<table>
+<tr><th>#</th><th>Error</th><th>Cause</th><th>Fix</th><th>Status</th></tr>
+<tr><td>1</td><td>Permission denied (publickey)</td><td>Wrong .pem path</td><td>/Users/kamau/Downloads/jenkins-key.pem</td><td><span class="tag-done">✅ Fixed</span></td></tr>
+<tr><td>2</td><td>.pem file not found</td><td>File moved</td><td>find ~ -name "*.pem"</td><td><span class="tag-done">✅ Fixed</span></td></tr>
+<tr><td>3</td><td>EC2 Instance Connect failed</td><td>Browser SSH issue</td><td>Used Mac Terminal SSH</td><td><span class="tag-done">✅ Fixed</span></td></tr>
+<tr><td>4</td><td>Instance Terminated accidentally</td><td>Confused Stop vs Terminate</td><td>Launched new EC2</td><td><span class="tag-done">✅ Fixed</span></td></tr>
+<tr><td>5</td><td>Jenkins Built-In Node offline</td><td>/tmp below 1GiB</td><td>Lower threshold to 200MB in Jenkins Configure</td><td><span class="tag-progress">🔄 Pending</span></td></tr>
+<tr><td>6</td><td>SSH run from inside EC2</td><td>Already in EC2 terminal</td><td>Open new Mac Terminal</td><td><span class="tag-done">✅ Fixed</span></td></tr>
+<tr><td>7</td><td>GCP VM connection refused</td><td>Wrong script + no HTTP</td><td>Recreated VM with correct script + Allow HTTP</td><td><span class="tag-done">✅ Fixed</span></td></tr>
+<tr><td>8</td><td>curl /healthz → 404</td><td>Endpoint not in script</td><td>echo "OK" | sudo tee /var/www/html/healthz</td><td><span class="tag-done">✅ Fixed</span></td></tr>
+<tr><td>9</td><td>curl /metadata | jq parse error</td><td>jq not installed</td><td>sudo apt install jq -y + create endpoint</td><td><span class="tag-done">✅ Fixed</span></td></tr>
+</table>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 7: Commands I Have Learned</h2>
+
+<h3>SSH & Connection</h3>
+<pre>ssh -i /Users/kamau/Downloads/jenkins-key.pem ec2-user@YOUR_IP
+chmod 400 /Users/kamau/Downloads/jenkins-key.pem
+find ~ -name "*.pem" 2>/dev/null</pre>
+
+<h3>Linux Basics</h3>
+<pre>sudo su                          # Switch to root user
+cd ~                             # Go to home directory
+ls -la                           # List files with details
+df -h /tmp                       # Check disk space
+du -sh /tmp/*                    # Check what's using /tmp
+sudo rm -rf /tmp/*               # Clear temp files
+mount | grep /tmp                # Check /tmp mount
+free -h                          # Check memory
+top                              # See running processes
+hostnamectl                      # Show server info</pre>
+
+<h3>Jenkins & Docker</h3>
+<pre>sudo yum install jenkins -y      # Install Jenkins
+sudo yum install docker -y       # Install Docker
+sudo systemctl start jenkins     # Start Jenkins
+sudo systemctl start docker      # Start Docker
+sudo systemctl stop jenkins      # Stop Jenkins
+sudo systemctl status jenkins    # Check Jenkins status
+sudo systemctl enable jenkins    # Auto start on reboot
+sudo systemctl restart jenkins   # Restart Jenkins
+sudo usermod -aG docker jenkins  # Connect Jenkins to Docker
+sudo docker run hello-world      # Test Docker works
+sudo docker ps                   # List running containers
+curl -I http://localhost:8080    # Test Jenkins is responding</pre>
+
+<h3>AWS CLI</h3>
+<pre>aws sts get-caller-identity      # Verify IAM Role attached</pre>
+
+<h3>GCP / NGINX</h3>
+<pre>sudo systemctl status nginx               # Check NGINX status
+sudo journalctl -u google-startup-scripts # View startup logs
+curl -s localhost | head                  # Quick page check
+curl -s localhost/healthz                 # Machine proof → OK
+curl -s localhost/metadata | jq           # Engineer proof → JSON
+sudo apt install jq -y                    # Install jq
+echo "OK" | sudo tee /var/www/html/healthz  # Create healthz endpoint</pre>
+
+<h3>Jenkins Admin</h3>
+<pre>sudo cat /var/lib/jenkins/secrets/initialAdminPassword</pre>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 8: Quiz Scores</h2>
+<table>
+<tr><th>Quiz</th><th>Date</th><th>Score</th><th>Topics Missed</th></tr>
+<tr><td>EC2, Docker, Jenkins Basics</td><td>Mar 20, 2026</td><td><strong>7/10 (70%)</strong></td><td>EC2 Terminated state, Docker container, systemctl install vs start</td></tr>
+</table>
+<div class="warning">📝 Review notes created for all 3 missed topics ✅</div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 9: Questions I Still Have</h2>
+<ul><li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li></ul>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 10: Where I Left Off</h2>
+<table>
+<tr><th>Item</th><th>Detail</th></tr>
+<tr><td>Last Session</td><td>March 22, 2026</td></tr>
+<tr><td>Last Topic</td><td>GCP VM Lab — NGINX full endpoint testing. All 3 curl tests passing ✅. Started GitHub setup.</td></tr>
+<tr><td>Next Task 1</td><td>Complete GitHub setup → Create account → Install Git → Create repo → Push scripts</td></tr>
+<tr><td>Next Task 2</td><td>Screenshot GCP lab outputs for Week A homework → Submit in Google Docs</td></tr>
+<tr><td>Next Task 3</td><td>Fix Jenkins Built-In Node → Lower Free Temp Space to 200MB → Bring node online</td></tr>
+<tr><td>After That</td><td>Set up first Jenkins Pipeline/Job</td></tr>
+<tr><td>Then</td><td>Connect Jenkins to GitHub repo</td></tr>
+<tr><td>Future</td><td>Start AWS SAA — What is AWS & Cloud Computing</td></tr>
+</table>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+<h2>Section 11: My Setup Details</h2>
+<table>
+<tr><th>Item</th><th>Value</th></tr>
+<tr><td>AWS Account ID</td><td>533972479438</td></tr>
+<tr><td>EC2 Instance ID</td><td>i-0bc0e5d8cd5428ec7</td></tr>
+<tr><td>EC2 Public IP</td><td>54.221.138.84 ⚠️ Changes on restart!</td></tr>
+<tr><td>IAM Role</td><td>JenkinsEC2Role</td></tr>
+<tr><td>Key File</td><td>/Users/kamau/Downloads/jenkins-key.pem</td></tr>
+<tr><td>Jenkins URL</td><td>http://YOUR_CURRENT_EC2_IP:8080</td></tr>
+<tr><td>AMI</td><td>Amazon Linux 2023</td></tr>
+<tr><td>Instance Type</td><td>t2.micro (free tier)</td></tr>
+<tr><td>GCP VM Name</td><td>instance-20260322-175656</td></tr>
+<tr><td>GCP OS</td><td>Debian GNU/Linux 12 (bookworm)</td></tr>
+<tr><td>GCP Console</td><td>https://console.cloud.google.com</td></tr>
+</table>
+</div>
+
+<hr class="divider">
+
+<div class="success">✅ <strong>READY?</strong> Please confirm you have read my full context and continue from <strong>Section 10: Where I Left Off.</strong></div>
+
+</body>
+</html>

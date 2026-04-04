@@ -1,0 +1,177 @@
+========================================
+SEIR-1 WEEK 1 — WHAT IDENTITY ACTUALLY CONTROLS
+My Study Notes
+========================================
+
+----------------------------------------
+WHAT IS IT?
+----------------------------------------
+Identity is the system that controls WHO is trusted to do WHAT
+in a cloud environment.
+
+It is not a feature or a setting.
+It is the CONTROL PLANE of a cloud system.
+
+Two rules to memorize:
+    Infrastructure decides what CAN EXIST.
+    Identity decides WHO IS TRUSTED to use it.
+
+Example: You can build the most secure server in the world.
+If identity is misconfigured, the wrong person gets in —
+or the right person gets locked out.
+Either way, the infrastructure doesn't matter.
+
+----------------------------------------
+KEY SERVICES & TERMS
+----------------------------------------
+Identity
+    The system that answers: "Who are you and should I trust you?"
+    Controls access to people, data, and infrastructure.
+
+Authentication
+    PROVING WHO YOU ARE.
+    Question it answers: "Are you who you claim to be?"
+    Example: You enter your password. System confirms your identity.
+    KEY POINT: Authentication alone does NOT give you access.
+
+Authorization
+    PROVING WHAT YOU ARE ALLOWED TO DO.
+    Question it answers: "Are you permitted to do this action?"
+    Example: You are logged in as a developer but your role
+             only allows READ access, not WRITE access.
+    KEY POINT: Authorization happens AFTER authentication.
+
+Trust
+    A configured relationship where one system accepts
+    identity claims from another system.
+    Question it answers: "Do I accept what this other system tells me?"
+    Example: GCP trusts Microsoft Entra ID to verify your identity.
+    KEY POINT: Trust is NOT automatic. It is deliberate and fragile.
+
+Principal
+    Who a policy applies to.
+    Can be a user, a service account, or a group.
+
+Least Privilege
+    Only grant the MINIMUM access needed to do the job. Nothing more.
+
+Blast Radius
+    How much damage can happen if an identity change goes wrong.
+    Small = one resource affected.
+    Large = entire organization affected.
+
+Lockout
+    When a valid user or system LOSES ACCESS due to an identity failure.
+    A lockout IS an outage. It stops work just like a server going down.
+
+Audit Trail / Log
+    The record of who did what and when.
+    Mantra: "If it's not logged, it didn't happen."
+
+----------------------------------------
+HOW IT WORKS
+----------------------------------------
+Identity works in layers inside a cloud system:
+
+Step 1: A user or service tries to access a resource.
+Step 2: The identity provider authenticates the user.
+        (Are you who you say you are?)
+Step 3: The cloud platform checks authorization.
+        (Are you allowed to do this action on this resource?)
+Step 4: If BOTH checks pass → access granted.
+Step 5: Every step is LOGGED.
+
+CRITICAL POINT:
+Authentication and authorization are SEPARATE.
+Passing authentication does NOT guarantee authorization.
+You can prove who you are and STILL be denied.
+
+Trust is the glue between layers.
+If trust breaks (certificate expires, config changes),
+the ENTIRE chain breaks — even if credentials are valid.
+
+----------------------------------------
+THINGS TO REMEMBER
+----------------------------------------
+1. Identity failures cause outages.
+   A server going down is visible and recoverable.
+   An identity failure can SILENTLY lock out an entire team.
+   Recovery is much harder.
+
+2. Access recovery is harder than deployment rollback.
+   Bad code? Roll it back.
+   Bad identity config? You may have locked out the account
+   needed to FIX the mistake. This is why identity changes
+   must be slow, deliberate, and always have a recovery plan.
+
+3. Authentication is NOT authorization.
+   Logging in successfully ≠ you can do what you need to do.
+   BOTH layers must work.
+
+4. Trust is fragile.
+   Trust relationships break due to:
+   - Certificate expiration
+   - Configuration changes
+   - Policy drift
+   When trust breaks, EVERYONE who depends on it loses access
+   at the same time.
+
+5. Blast radius always matters.
+   Before ANY identity change ask:
+   "If this goes wrong, what is the maximum damage?"
+   Start small. Test in isolation.
+   NEVER change production identity config without a recovery plan.
+
+6. Logs are evidence.
+   Gut feelings and screenshots are NOT evidence.
+   Logs ARE. If you can't find it in a log, you can't prove it happened.
+
+7. AI is not the decision maker.
+   AI can help you analyze.
+   AI cannot and should NOT make identity decisions.
+   YOU are accountable for every change you make.
+
+----------------------------------------
+QUESTIONS I HAVE
+----------------------------------------
+- What is the difference between a service account and a human account?
+- Who is responsible when a trust relationship breaks in a federated system?
+- How do you recover access when the admin account is locked out?
+- What does "break-glass" access mean and when is it used?
+
+----------------------------------------
+REAL WORLD ANALOGY
+----------------------------------------
+Think of a large HOSPITAL.
+
+Infrastructure = the building, rooms, and equipment.
+Identity       = the badge system controlling who enters which room.
+
+Authentication = your badge identifies you as Dr. Smith.
+Authorization  = your badge allows you into operating rooms
+                 but NOT the pharmacy.
+Trust          = the hospital trusts badges issued by its own HR system.
+
+Lockout scenario:
+Dr. Smith's badge stops working at 2am during surgery prep.
+The OR still exists. The equipment still works.
+But the surgeon cannot get in.
+THAT IS AN OUTAGE.
+
+Access recovery:
+Getting Dr. Smith back in WITHOUT compromising the pharmacy.
+This takes time, deliberate steps, and a chain of trusted people.
+You cannot just override the badge system blindly.
+
+----------------------------------------
+PROGRAM MANTRAS (MEMORIZE THESE)
+----------------------------------------
+1. "Infrastructure decides what can exist. Identity decides who is trusted."
+2. "Identity changes are slow, deliberate, and high-impact."
+3. "If it's not logged, it didn't happen."
+4. "Shift left — chase failure to learn."
+5. "AI is a bounded assistant. Never the decision maker."
+
+========================================
+END OF WEEK 1 NOTES
+========================================

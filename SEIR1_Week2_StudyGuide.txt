@@ -1,0 +1,209 @@
+========================================
+SEIR-1 — WEEK 2 STUDY GUIDE
+Cloud as a Trust Boundary
+========================================
+
+HOW TO USE THIS GUIDE
+----------------------
+Read each section. Close the document. Answer from memory.
+If you cannot answer without notes, you are not ready to move on.
+
+---
+
+SECTION 1: THE TWO PLANES
+--------------------------
+
+Core Statement (Memorize This)
+    GCP is the resource plane — infrastructure lives here.
+    Microsoft Entra ID is the trust plane — identity authority lives here.
+    These are two separate systems connected by deliberate configuration.
+
+Check Yourself
+    What is the resource plane?
+    What is the trust plane?
+    Which plane decides who is trusted?
+    Which plane holds the VMs and storage?
+
+---
+
+SECTION 2: THE TRUST FLOW
+--------------------------
+
+The Flow (Memorize This)
+    User → Identity Provider → Cloud Resource
+
+What happens at each step:
+    User: Tries to access a GCP resource.
+    Identity Provider (Entra ID): Authenticates the user. Issues a token.
+    Cloud Resource (GCP): Receives the token. Checks authorization. Grants or denies access.
+
+Key Point
+    GCP never authenticates the user directly.
+    It delegates authentication to Entra ID.
+    GCP only handles authorization.
+
+Check Yourself
+    Draw the trust flow from memory.
+    Where does authentication happen in this flow?
+    Where does authorization happen?
+    What does GCP receive from Entra ID?
+    What happens if the identity provider is unavailable?
+
+---
+
+SECTION 3: WHAT IS A TRUST BOUNDARY
+--------------------------------------
+
+Definition
+    The line between what is inside your trusted system and what is outside.
+    Anything crossing the boundary must present verified identity.
+
+What Crosses the Trust Boundary
+    A token — a signed document issued by Entra ID that says:
+    "This is who the user is and what claims they carry."
+    GCP accepts the token because it trusts Entra ID to issue them correctly.
+
+What Happens When the Boundary Breaks
+    If the trust configuration between Entra ID and GCP breaks:
+    Tokens are no longer accepted.
+    Users cannot access GCP resources.
+    The infrastructure is still running. Access is gone.
+
+Check Yourself
+    What is a trust boundary in your own words?
+    What crosses the trust boundary between Entra ID and GCP?
+    What breaks when the trust boundary is misconfigured?
+
+---
+
+SECTION 4: FEDERATION
+----------------------
+
+What It Is
+    The mechanism that extends trust from one system to another.
+    Entra ID federates into GCP so Microsoft-authenticated users
+    can access GCP resources without a separate GCP account.
+
+Why It Matters
+    Without federation, every cloud needs its own user accounts.
+    With federation, one identity (in Entra ID) works across all federated systems.
+
+Why It Is Fragile
+    Federation depends on a configured trust relationship.
+    If a certificate expires, the configuration drifts, or a policy changes —
+    the federation breaks and everyone who depends on it loses access simultaneously.
+
+Check Yourself
+    What problem does federation solve?
+    What makes federation fragile?
+    If federation breaks at 3am, who loses access?
+
+---
+
+SECTION 5: CLOUDS ARE NOT JUST COMPUTE
+----------------------------------------
+
+The Wrong Mental Model
+    "The cloud is just someone else's computer."
+    This model treats the cloud as infrastructure only.
+    It ignores the trust plane entirely.
+
+The Right Mental Model
+    The cloud is a trust boundary.
+    Every resource sits behind an identity checkpoint.
+    Access is never assumed. It is always verified.
+    The identity plane controls the resource plane.
+
+Why This Matters
+    Engineers who treat cloud as just compute
+    make identity decisions carelessly.
+    They create service accounts with too much access.
+    They skip federation configuration.
+    They ignore blast radius.
+    Those engineers cause the most expensive incidents.
+
+Check Yourself
+    Why is "the cloud is just someone else's computer" a dangerous mental model?
+    What does it mean that identity controls the resource plane?
+
+---
+
+SECTION 6: WEEK 2 ARTIFACT PREP
+---------------------------------
+
+Your deliverable: A trust diagram showing:
+    User → Identity Provider (Entra ID) → Cloud Resource (GCP)
+
+Before you draw it, answer these:
+
+Question 1
+    Where does authentication happen in your diagram?
+    Label it clearly.
+
+Question 2
+    Where does authorization happen?
+    Label it clearly.
+
+Question 3
+    What crosses the trust boundary between Entra ID and GCP?
+    Add it to your diagram.
+
+Question 4
+    What is the trust boundary in your diagram?
+    Show it visually — a line, a box, a gap.
+
+If you can answer all four and draw the diagram without looking at your notes,
+you are ready to submit the artifact.
+
+---
+
+SECTION 7: CHALLENGE QUESTIONS
+--------------------------------
+
+Answer without notes.
+
+1. What is the difference between the resource plane and the trust plane?
+
+2. A user is authenticated by Entra ID but cannot access a GCP VM.
+   What is the most likely cause?
+
+3. Your company adds a new cloud provider.
+   Instead of creating new user accounts, you extend access using federation.
+   What are the risks of this approach?
+
+4. Entra ID goes down for 30 minutes.
+   Your GCP infrastructure is fully operational.
+   What happens to your users?
+
+5. A new engineer says:
+   "I just need GCP access, why do I need a Microsoft account?"
+   How do you explain it?
+
+6. What is a token and why does GCP accept it?
+
+7. What is the difference between a tenant and a GCP project?
+
+---
+
+SCORING YOURSELF
+-----------------
+7/7 from memory — Ready for Week 3
+5-6/7 — Review what you missed. Try again.
+Below 5 — Re-read Week 2 notes before moving on.
+
+---
+
+CONNECTING WEEK 1 TO WEEK 2
+-----------------------------
+Week 1: Identity decides who is trusted.
+Week 2: Here is where identity lives and how trust flows.
+
+These two weeks together give you the mental model for everything that follows.
+Every lab, every script, every federation config in this program
+is built on top of what you learned in Weeks 1 and 2.
+
+Do not skip ahead.
+
+========================================
+END OF WEEK 2 STUDY GUIDE
+========================================

@@ -1,0 +1,204 @@
+========================================
+SEIR-1 — WEEK 1 NOTES
+What Identity Actually Controls
+Program: Systems Engineering & Identity Responsibility
+========================================
+
+---
+
+WHAT IS IT?
+-----------
+Identity is the system that decides who is trusted to do what in a cloud environment.
+It is not a feature. It is not a setting. It is a control plane.
+
+Infrastructure determines what can exist.
+Identity determines who is trusted to act on it.
+
+Week 1 is about building the mental model before touching any tools.
+You will not write a script this week. You will not touch a console.
+You will learn to think about identity the way a real engineer does.
+
+---
+
+KEY SERVICES & TERMS
+---------------------
+Identity
+    The system that answers: "Who are you and should I trust you?"
+    In real systems, identity controls access to people, data, and infrastructure.
+
+Authentication
+    Proving who you are.
+    Example: Entering your password or presenting a certificate.
+    Authentication answers: "Are you who you claim to be?"
+
+Authorization
+    Proving what you are allowed to do.
+    Example: Your role allows read access but not write access.
+    Authorization answers: "Are you allowed to do this?"
+
+Trust
+    The relationship between systems that allows one to accept identity claims from another.
+    Example: GCP trusts Microsoft Entra ID to authenticate users.
+    Trust is not automatic. It is configured, deliberate, and fragile.
+
+Principal
+    Who the policy applies to. Can be a user, a service account, or a group.
+
+Least Privilege
+    Only grant the minimum access required to do the job. Nothing more.
+
+Blast Radius
+    How much damage can be done if an identity is compromised or misconfigured.
+    Small blast radius = mistake affects one resource.
+    Large blast radius = mistake affects an entire organization.
+
+Lockout
+    When a valid user or system loses access due to an identity failure.
+    A lockout is an outage. It stops work just like a server going down.
+
+Audit Trail / Log
+    The record of who did what and when.
+    Program mantra: "If it's not logged, it didn't happen."
+
+---
+
+HOW IT WORKS
+------------
+In a cloud system, identity works in layers:
+
+1. A user or service tries to access a resource.
+2. The identity provider (e.g., Microsoft Entra ID) authenticates the user.
+   -- It checks: are you who you say you are?
+3. The cloud platform (e.g., GCP) checks authorization.
+   -- It checks: are you allowed to do this action on this resource?
+4. If both checks pass, access is granted.
+5. Every step is logged.
+
+The critical point:
+    Authentication and authorization are separate.
+    Passing authentication does not guarantee authorization.
+    You can prove who you are and still be denied.
+
+Trust is the glue between these layers.
+If trust breaks (e.g., a certificate expires, a federation config changes),
+the entire chain breaks — even if the user's credentials are valid.
+
+---
+
+THINGS TO REMEMBER
+------------------
+1. Identity failures cause outages.
+   A server going down is visible and recoverable.
+   An identity failure can silently lock out an entire team, and recovery is harder.
+
+2. Access recovery is harder than deployment rollback.
+   If you deploy bad code, you roll it back.
+   If you misconfigure identity, you may lock out the very account
+   needed to fix the mistake. This is why identity changes are slow and deliberate.
+
+3. Authentication is not authorization.
+   Logging in successfully does not mean you can do what you need to do.
+   Both layers must work.
+
+4. Trust is fragile.
+   Trust relationships between systems (federation) can break due to:
+   -- Certificate expiration
+   -- Configuration changes
+   -- Policy drift
+   When trust breaks, everyone who depends on it loses access simultaneously.
+
+5. Blast radius always matters.
+   Before any identity change, ask:
+   "If this goes wrong, what is the maximum damage?"
+   Start small. Test in isolation. Never change production identity config without a recovery plan.
+
+6. Logs are evidence.
+   Gut feelings and screen grabs are not evidence.
+   Logs are. If you cannot find it in a log, you cannot prove it happened.
+
+7. AI is not the decision maker.
+   AI can help you analyze and summarize.
+   AI cannot and should not make identity decisions.
+   You are accountable for every change you make.
+
+---
+
+QUESTIONS I HAVE
+----------------
+(Add your own here as you study)
+
+- What is the difference between a service account and a human account in practice?
+- Who is responsible when a trust relationship breaks in a federated system?
+- How do you recover access when the admin account is locked out?
+- What does "break-glass" access mean and when is it used?
+
+---
+
+REAL WORLD ANALOGY
+------------------
+Think of a large hospital.
+
+Infrastructure = the building, the rooms, the equipment.
+Identity = the badge system that controls who can enter which room.
+
+Authentication = your badge identifies you as Dr. Smith.
+Authorization = your badge allows you into the operating rooms but not the pharmacy.
+Trust = the hospital trusts badges issued by its own HR system.
+
+A lockout is when Dr. Smith's badge stops working at 2am during surgery prep.
+The infrastructure (the OR) still exists. The equipment still works.
+But the surgeon cannot get in. That is an outage.
+
+Access recovery = getting Dr. Smith back in without compromising the pharmacy.
+This takes time, deliberate steps, and a chain of trusted people.
+You cannot just override the badge system blindly.
+
+---
+
+USE CASES
+---------
+Identity control applies everywhere:
+
+- A cloud engineer needs access to a GCP project to deploy infrastructure.
+  Identity determines whether they can.
+
+- An automated pipeline (CI/CD) needs to write to a storage bucket.
+  A service account identity controls whether it can.
+
+- A company merges with another company and needs to share systems.
+  Federation extends trust so users from Company B can access Company A's GCP resources
+  without creating new accounts.
+
+- An engineer leaves the company.
+  Revoking their identity immediately removes all access across all systems.
+  This is why identity is the control plane, not the firewall.
+
+---
+
+WEEK 1 ARTIFACT — WRITTEN EXPLANATION
+--------------------------------------
+Your Week 1 artifact is a written answer to this question:
+
+"What does identity control in a cloud system?"
+
+Your answer must address:
+1. The difference between authentication, authorization, and trust
+2. Why a lockout is an outage
+3. Why access recovery is harder than deployment rollback
+
+Write it in plain language. No buzzwords. If you cannot explain it simply,
+you do not understand it yet.
+
+---
+
+PROGRAM MANTRAS TO INTERNALIZE
+--------------------------------
+"Infrastructure decides what can exist. Identity decides who is trusted."
+"Identity changes are slow, deliberate, and high-impact."
+"If it's not logged, it didn't happen."
+"Shift left — chase failure to learn."
+"AI is a bounded assistant. Never the decision maker."
+
+========================================
+END OF WEEK 1 NOTES
+========================================

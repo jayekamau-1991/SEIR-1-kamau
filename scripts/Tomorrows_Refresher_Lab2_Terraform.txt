@@ -1,0 +1,134 @@
+========================================
+TOMORROW'S REFRESHER — LAB 2 TERRAFORM
+March 22, 2026
+========================================
+
+----------------------------------------
+DAILY STARTUP ROUTINE
+----------------------------------------
+1. Start your VM:
+   gcloud compute instances start seir-lab1-vm --zone=us-central1-a
+
+2. Verify it's running:
+   gcloud compute instances list
+
+3. Get your new external IP (it may have changed!):
+   gcloud compute instances list
+   Look for EXTERNAL_IP column
+
+4. Verify homepage still works:
+   Open http://<YOUR_NEW_IP> in browser
+
+----------------------------------------
+WHERE WE LEFT OFF
+----------------------------------------
+Lab 1 is COMPLETE and submitted to GitHub.
+Tomorrow we do Lab 2 — the exact same VM
+but deployed 100% with Terraform code.
+
+----------------------------------------
+WHAT IS LAB 2?
+----------------------------------------
+Lab 1 = you ran gcloud commands manually to create the VM
+Lab 2 = you write Terraform files that create the VM automatically
+
+This is the transition from:
+    "click ops engineer" → "cloud engineer"
+
+Same result. Completely different approach.
+The Terraform way is how real companies do it.
+
+----------------------------------------
+FILES YOU ALREADY HAVE FOR LAB 2
+----------------------------------------
+Location: /Users/devopsstudy/Class_7_ZION/Class 7.5/SEIR-1-notes/scripts/
+
+Files needed:
+- provider.tf     (tells Terraform to use GCP)
+- main.tf         (creates firewall + VM + startup script)
+- variables.tf    (we may need to create this)
+- terraform.tfvars (we may need to create this)
+
+----------------------------------------
+LAB 2 COMMANDS IN ORDER
+----------------------------------------
+Step 1 — Go to your Terraform folder:
+   cd "/Users/devopsstudy/Class_7_ZION/Class 7.5/SEIR-1-notes/scripts"
+
+Step 2 — Initialize Terraform:
+   terraform init
+
+Step 3 — Validate your files:
+   terraform validate
+
+Step 4 — Preview what will be created:
+   terraform plan -out tfplan
+
+Step 5 — Apply (actually create the VM):
+   terraform apply tfplan
+
+Step 6 — Get your VM URL:
+   terraform output vm_url
+
+Step 7 — Open the URL in your browser
+
+Step 8 — Run the gate script:
+   VM_IP=$(terraform output -raw vm_external_ip)
+   VM_IP="$VM_IP" bash gate_lab2_http.sh
+
+----------------------------------------
+LAB 2 SUBMISSION CHECKLIST
+----------------------------------------
+□ main.tf
+□ plan.txt (saved terraform plan output)
+□ terraform apply screenshot or terminal output
+□ gate_result.json
+□ badge.txt
+□ Homepage screenshot (port 80)
+
+----------------------------------------
+THINGS TO WATCH OUT FOR TOMORROW
+----------------------------------------
+1. Your external IP will likely CHANGE when VM restarts
+   Always run: gcloud compute instances list
+   to get the new IP before testing
+
+2. Terraform needs your GCP project ID
+   Project ID: kamau-lab4-2026
+
+3. Variables.tf may need to be created
+   We will handle this together step by step
+
+4. If terraform init fails:
+   Make sure you are in the right folder first
+
+5. Gate script needs execute permission:
+   chmod +x gate_lab2_http.sh
+   Then run with bash:
+   VM_IP=<YOUR_IP> bash gate_lab2_http.sh
+
+----------------------------------------
+KEY THINGS TO REMEMBER FROM TODAY
+----------------------------------------
+- Identity = the control plane of cloud systems
+- Authentication = proving WHO you are
+- Authorization = proving WHAT you can do
+- Trust = configured relationship between systems
+- A lockout IS an outage
+- "If it's not logged, it didn't happen"
+- Real engineers prove it with scripts, not screenshots
+
+----------------------------------------
+YOUR IMPORTANT INFO
+----------------------------------------
+GCP Account:    jayekamau@gmail.com
+Project ID:     kamau-lab4-2026
+VM Name:        seir-lab1-vm (Lab 1)
+                seir-lab2-vm (Lab 2 — new one)
+Zone:           us-central1-a
+GitHub:         jayekamau-1991
+GitHub Repo:    SEIR-1-labs
+
+========================================
+SEE YOU TOMORROW — LET'S DO TERRAFORM! 🚀
+========================================

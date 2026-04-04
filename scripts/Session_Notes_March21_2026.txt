@@ -1,0 +1,87 @@
+========================================
+SESSION NOTES — MARCH 21, 2026
+SEIR-1 Program + AWS Study Session
+========================================
+
+----------------------------------------
+WHAT WE COVERED TODAY
+----------------------------------------
+
+1. SEIR-1 PROGRAM ORIENTATION
+   - Received and reviewed all Week A and Week B materials
+   - Understood the big picture:
+     Week A = Identity & Trust (the mindset)
+     Lab 1  = Prove a server is real and working (manual)
+     Lab 2  = Automate that same server with Terraform (professional)
+
+2. STUDY NOTES CREATED
+   - SEIR1_Week1_Identity_Notes.txt
+   - SEIR1_Week2_TrustBoundary_Notes.txt
+   Both saved in your format: What Is It / Key Terms /
+   How It Works / Things to Remember / Questions / Analogy
+
+3. GCLOUD CLI INSTALLED
+   - Downloaded Google Cloud SDK on Mac
+   - Ran install.sh and updated .zshrc
+   - Authenticated with jayekamau@gmail.com
+   - Project set: kamau-lab4-2026
+   - Region: us-central1 (Iowa)
+   - Zone: us-central1-a
+
+4. LAB 1 COMPLETED ✅
+   - VM already existed: seir-lab1-vm (e2-micro, Debian 12)
+   - Created firewall rule to open port 80
+   - Verified homepage at http://34.30.184.253
+   - SSH'd into VM and ran all proof commands
+   - Passed gate script 5/5
+   - Pushed proof to GitHub
+
+----------------------------------------
+LAB 1 PROOF SUMMARY
+----------------------------------------
+VM Name:        seir-lab1-vm
+External IP:    34.30.184.253
+Region/Zone:    us-central1 / us-central1-a
+Project:        kamau-lab4-2026
+Web Server:     nginx (active and running)
+Homepage:       http://34.30.184.253 ✅
+Healthz:        curl localhost/healthz → ok ✅
+Metadata:       curl localhost/metadata | jq . → valid JSON ✅
+Gate Result:    PASS (5/5) ✅
+GitHub Repo:    https://github.com/jayekamau-1991/SEIR-1-labs ✅
+
+----------------------------------------
+FILES SUBMITTED TO GITHUB
+----------------------------------------
+- badge.txt
+- gate_result.json
+- SEIR-I OPS Panel-Node Online.png (screenshot)
+
+----------------------------------------
+TOOLS INSTALLED TODAY
+----------------------------------------
+- gcloud CLI (Google Cloud SDK 561.0.0)
+- Terraform (already installed, needs update to 1.14.7)
+- Git (already installed 2.50)
+
+----------------------------------------
+IMPORTANT INFO TO REMEMBER
+----------------------------------------
+GCP Account:    jayekamau@gmail.com
+Project ID:     kamau-lab4-2026
+VM Name:        seir-lab1-vm
+VM Zone:        us-central1-a
+External IP:    34.30.184.253 (may change if VM is stopped/started)
+GitHub:         jayekamau-1991
+GitHub Repo:    SEIR-1-labs (private)
+Scripts folder: /Users/devopsstudy/Class_7_ZION/Class 7.5/SEIR-1-notes/scripts/
+Deliverables:   /Users/devopsstudy/Class_7_ZION/Class 7.5/Deliverables/
+
+----------------------------------------
+QUESTIONS I HAVE
+----------------------------------------
+- (Add any questions that came up today)
+
+========================================
+END OF SESSION NOTES — MARCH 21, 2026
+========================================

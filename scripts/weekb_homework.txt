@@ -1,0 +1,9 @@
+Deliverables
+
+Students submit:
+    main.tf (and/or split files)
+    terraform plan output saved as plan.txt
+    terraform apply proof (screenshot or terminal output)
+    gate_result.json + badge.txt from the gate script
+    VM URL proof: homepage loads on port 80
+

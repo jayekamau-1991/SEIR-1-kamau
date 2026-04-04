@@ -1,0 +1,403 @@
+=====================================
+   CLAUDE MASTER STUDY SCRIPT
+   Kamau — DevOps & AWS Certification
+   Last Updated: March 20, 2026
+=====================================
+INSTRUCTIONS: Copy and paste this ENTIRE file
+as your first message in every new Claude chat.
+Update all sections after every study session.
+=====================================
+
+
+Hi Claude! I am Kamau. Here is my full study context.
+Please read everything carefully before we begin.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 1: WHO I AM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- I am a complete beginner in cloud and DevOps
+- I use a Mac (iMac)
+- I am studying for:
+    → AWS SAA (Solutions Architect Associate) — ACTIVE
+    → AWS AI Practitioner — UPCOMING
+    → AWS ML Associate — UPCOMING
+- I am also taking a class that uses Docker, Jenkins,
+  Linux Terminal, GitHub and CI/CD pipelines
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 2: HOW I LIKE TO STUDY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Always explain things simply — assume I am a beginner
+- Always use my notes format (see Section 3)
+- After each topic offer to quiz me
+- Help me debug errors step by step
+- Keep track of what we cover each session
+- If I say "do the same for X" — make notes for that topic
+- If I say "quiz me" — quiz me on recent topics
+- If I say "closeout notes" — summarize the full session
+- If I say "update my script" — help me update this file
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 3: MY NOTES FORMAT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Every topic note must follow this exact format:
+
+  What is it?
+  Key Services & Terms
+  How it Works
+  Things to Remember
+  Questions I Have
+  Real World Analogy
+
+Deliver notes as a .txt file AND an HTML file
+(so I can use in Claude, Google Docs and Apple Notes)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 4: SUBJECT TRACKER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Update the status of each topic after every session:
+[✅ DONE] [🔄 IN PROGRESS] [⏳ NOT STARTED YET]
+
+------------------------------------
+SUBJECT 1: AWS SAA
+------------------------------------
+Exam Guide : https://aws.amazon.com/certification/certified-solutions-architect-associate
+Exam Domains:
+  - Design Secure Architectures       (30%)
+  - Design Resilient Architectures    (26%)
+  - Design High-Performing Architectures (24%)
+  - Design Cost-Optimized Architectures  (20%)
+
+Topics:
+  ⏳ What is AWS & Cloud Computing
+  ⏳ Global Infrastructure (Regions, AZs, Edge Locations)
+  🔄 EC2 (Elastic Compute Cloud)
+       - Launching an instance ✅
+       - Instance types and states ✅
+       - SSH connection via Terminal ✅
+       - IAM Role attachment ✅
+       - Security Groups & Ports ✅
+       - Key Pairs (.pem file) ✅
+       - Free Tier (t2.micro) ✅
+  ⏳ IAM (Identity & Access Management)
+  ⏳ S3 (Simple Storage Service)
+  ⏳ VPC (Virtual Private Cloud)
+  ⏳ RDS (Relational Database Service)
+  ⏳ Lambda
+  ⏳ Load Balancers
+  ⏳ Auto Scaling
+  ⏳ CloudWatch
+  ⏳ Route 53
+  ⏳ CloudFront
+
+------------------------------------
+SUBJECT 2: DOCKER
+------------------------------------
+Docs : https://docs.docker.com
+
+Topics:
+  ✅ What Docker is
+  ✅ Containers vs Images
+  ✅ Port mapping in Docker Desktop
+  ✅ Running Jenkins in Docker
+  ✅ Installing Docker on EC2
+  ✅ Connecting Docker to Jenkins (usermod -aG docker jenkins)
+  ⏳ Dockerfile
+  ⏳ Docker Compose
+  ⏳ Docker Hub
+  ⏳ Building a custom Docker image
+  ⏳ Pushing image to ECR (AWS Container Registry)
+
+------------------------------------
+SUBJECT 3: JENKINS
+------------------------------------
+Docs : https://www.jenkins.io/doc
+
+Topics:
+  ✅ What Jenkins is
+  ✅ CI/CD basics
+  ✅ Running Jenkins on port 8080
+  ✅ Installing Jenkins on EC2
+  ✅ Jenkins Nodes and Built-In Node
+  🔄 Fixing Jenkins node offline error (/tmp disk space)
+  ⏳ Jenkins Pipeline
+  ⏳ Creating a Jenkins Job
+  ⏳ Connecting Jenkins to GitHub
+  ⏳ Jenkins + Docker pipeline
+  ⏳ Jenkins environment variables
+  ⏳ Jenkins credentials management
+
+------------------------------------
+SUBJECT 4: LINUX / TERMINAL
+------------------------------------
+Topics:
+  ✅ SSH into EC2 from Mac Terminal
+  ✅ sudo su (switch to root)
+  ✅ systemctl commands (start, stop, status, enable, restart)
+  ✅ yum install (package installation)
+  ✅ chmod 400 (file permissions)
+  ✅ mount | grep (checking mounts)
+  ✅ df -h (disk space)
+  ✅ find command (finding files)
+  ✅ rm -rf (removing files)
+  ⏳ File permissions (chmod full)
+  ⏳ Directory navigation (cd, ls, pwd)
+  ⏳ Text editors (vim, nano)
+  ⏳ Environment variables
+  ⏳ Cron jobs
+
+------------------------------------
+SUBJECT 5: GITHUB / CI-CD
+------------------------------------
+Topics:
+  ⏳ What is GitHub
+  ⏳ Git basics (clone, push, pull, commit)
+  ⏳ Connecting GitHub to Jenkins
+  ⏳ Webhooks
+  ⏳ CI/CD Pipeline end to end
+  ⏳ GitHub Actions
+
+------------------------------------
+SUBJECT 6: GCP (Google Cloud Platform)
+------------------------------------
+Docs : https://console.cloud.google.com
+
+Topics:
+  ✅ What GCP is vs AWS
+  ✅ GCP Console navigation
+  ✅ Creating a VM on Compute Engine
+  ✅ Choosing Debian OS for GCP labs
+  ✅ Startup scripts (super.sh vs superA)
+  ✅ Allow HTTP Traffic / Port 80
+  ✅ SSH into VM via GCP SSH button
+  ✅ Installing NGINX via startup script
+  ✅ Debugging dpkg lock errors
+  ✅ journalctl -u google-startup-scripts
+  ✅ curl localhost / curl external IP
+  ✅ Health endpoint testing (/health)
+  ✅ Syncing GitHub fork with instructor repo
+  ⏳ HTTPS and Load Balancing
+  ⏳ GCP Networking (advanced)
+  ⏳ GCP IAM and permissions
+  ⏳ GCP Storage
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 5: LABS COMPLETED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LAB 1 — EC2 + Jenkins + Docker Setup (March 20, 2026)
+  ✅ Launched EC2 instance (t2.micro, Amazon Linux 2023)
+  ✅ Connected via SSH using jenkins-key.pem
+  ✅ Installed Java 17 on EC2
+  ✅ Installed Jenkins on EC2
+  ✅ Installed Docker on EC2
+  ✅ Connected Jenkins and Docker
+  ✅ Attached IAM Role (JenkinsEC2Role)
+  ✅ Verified connection with aws sts get-caller-identity
+  ✅ Accessed Jenkins at http://EC2_IP:8080
+  🔄 Fix Jenkins Built-In Node offline error (PENDING)
+
+LAB 2 — GCP VM + NGINX Startup Script (March 20, 2026)
+  ✅ Navigated GCP Console
+  ✅ Learned VM creation on Compute Engine
+  ✅ Used Debian OS for GCP lab
+  ✅ Used superA startup script to install NGINX
+  ✅ Enabled Allow HTTP Traffic (port 80)
+  ✅ SSH into VM via GCP SSH button
+  ✅ Debugged dpkg lock error (apt + sleep 5 fix)
+  ✅ Used journalctl -u google-startup-scripts to debug
+  ✅ Tested with curl localhost and curl external IP
+  ✅ Tested health endpoint /health
+  ⏳ Complete Week A homework (screenshots required)
+  ⏳ Submit deliverable in Google Docs
+
+LAB 3 — GCP VM + NGINX Full Endpoint Testing (March 22, 2026)
+  ✅ Created new GCP VM (instance-20260322-175656)
+  ✅ Pasted verified startup script in Automation field
+  ✅ Enabled Allow HTTP Traffic (port 80)
+  ✅ VM booted and NGINX installed successfully
+  ✅ Web page loaded at http://EXTERNAL_IP
+  ✅ Installed jq (sudo apt install jq -y)
+  ✅ Added /healthz endpoint manually (echo "OK")
+  ✅ Added /metadata endpoint manually (JSON)
+  ✅ Test 1: curl -s localhost | head → HTML output ✅
+  ✅ Test 2: curl -s localhost/healthz → OK ✅
+  ✅ Test 3: curl -s localhost/metadata | jq → JSON output ✅
+  VM Details:
+    Hostname : instance-20260322-175656
+    OS       : Debian GNU/Linux 12 (bookworm)
+    Date     : Sun Mar 22 18:04:16 UTC 2026
+  ⏳ Screenshot outputs and submit in Google Docs
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 6: ERRORS I ENCOUNTERED & FIXED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ERROR 1: Permission denied (publickey)
+  Cause  : Wrong path to .pem file in SSH command
+  Fix    : Used correct path /Users/kamau/Downloads/jenkins-key.pem
+  Command: ssh -i /Users/kamau/Downloads/jenkins-key.pem ec2-user@IP
+
+ERROR 2: .pem file not found
+  Cause  : File was moved from Downloads folder
+  Fix    : Moved file back to Downloads and used find ~ -name "*.pem"
+
+ERROR 3: EC2 Instance Connect failed in browser
+  Cause  : AWS Console browser SSH not configured properly
+  Fix    : Used Mac Terminal SSH instead (more reliable)
+
+ERROR 4: Instance Terminated accidentally
+  Cause  : Confused Stop vs Terminate
+  Fix    : Launched a new EC2 instance
+  Lesson : STOP = paused, TERMINATE = deleted forever
+
+ERROR 5: Jenkins Built-In Node offline
+  Cause  : /tmp disk space (475.98 MiB) below 1GiB threshold
+  Fix    : Lower threshold in Jenkins → Manage Jenkins → Nodes
+           → Built-In Node → Configure → set to 200MB
+  Status : 🔄 PENDING — fix in next session
+
+ERROR 6: SSH command run from inside EC2 instead of Mac
+  Cause  : Ran SSH command while already inside EC2 terminal
+  Fix    : Open a new Terminal window on Mac first
+  Lesson : [ec2-user@...] = inside EC2, [kamau@iMac] = on Mac
+
+ERROR 7: GCP VM connection refused on http://EXTERNAL_IP
+  Cause  : Wrong script pasted + HTTP traffic not enabled
+  Fix    : Deleted VM, recreated with correct script + Allow HTTP ✅
+
+ERROR 8: curl -s localhost/healthz returns 404
+  Cause  : Script did not create /healthz endpoint
+  Fix    : Manually created it:
+           echo "OK" | sudo tee /var/www/html/healthz
+
+ERROR 9: curl -s localhost/metadata | jq parse error
+  Cause  : jq not installed + /metadata endpoint missing
+  Fix    : sudo apt install jq -y
+           Then manually created /metadata endpoint with JSON
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 7: COMMANDS I HAVE LEARNED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SSH & CONNECTION
+  ssh -i /Users/kamau/Downloads/jenkins-key.pem ec2-user@YOUR_IP
+  chmod 400 /Users/kamau/Downloads/jenkins-key.pem
+  find ~ -name "*.pem" 2>/dev/null
+
+LINUX BASICS
+  sudo su                          # Switch to root user
+  cd ~                             # Go to home directory
+  ls -la                           # List files with details
+  df -h /tmp                       # Check disk space
+  du -sh /tmp/*                    # Check what's using /tmp
+  sudo rm -rf /tmp/*               # Clear temp files
+  mount | grep /tmp                # Check /tmp mount
+  free -h                          # Check memory
+  top                              # See running processes
+  hostnamectl                      # Show server info
+
+JENKINS & DOCKER
+  sudo yum install jenkins -y      # Install Jenkins
+  sudo yum install docker -y       # Install Docker
+  sudo systemctl start jenkins     # Start Jenkins
+  sudo systemctl start docker      # Start Docker
+  sudo systemctl stop jenkins      # Stop Jenkins
+  sudo systemctl status jenkins    # Check Jenkins status
+  sudo systemctl enable jenkins    # Auto start on reboot
+  sudo systemctl restart jenkins   # Restart Jenkins
+  sudo usermod -aG docker jenkins  # Connect Jenkins to Docker
+  sudo docker run hello-world      # Test Docker works
+  sudo docker ps                   # List running containers
+  curl -I http://localhost:8080    # Test Jenkins is responding
+
+AWS CLI
+  aws sts get-caller-identity      # Verify IAM Role attached
+
+JENKINS ADMIN
+  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+GCP / NGINX
+  sudo systemctl status nginx      # Check NGINX status
+  sudo journalctl -u google-startup-scripts  # View startup logs
+  curl -s localhost | head         # Quick page check
+  curl -s localhost/healthz        # Machine proof → returns OK
+  curl -s localhost/metadata | jq  # Engineer proof → returns JSON
+  sudo apt install jq -y           # Install jq JSON formatter
+  echo "OK" | sudo tee /var/www/html/healthz   # Create healthz endpoint
+  sudo tee /var/www/html/metadata  # Create metadata endpoint
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 8: QUIZ SCORES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Quiz 1 — March 20, 2026 — EC2, Docker, Jenkins Basics
+  Score : 7/10 (70%)
+  Passed: .pem file, IAM Role, Jenkins port, EC2 IP change,
+          CI/CD meaning, IAM verify command, Jenkins node offline
+  Missed: EC2 Terminated state, Docker container definition,
+          systemctl start vs install command
+  Action: Review notes created for all 3 missed topics ✅
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 9: QUESTIONS I STILL HAVE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+(Add questions here as they come up in class)
+
+-
+-
+-
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 10: WHERE I LEFT OFF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Last Session  : March 22, 2026
+Last Topic    : GCP VM Lab — NGINX full endpoint testing
+                curl localhost, healthz, metadata | jq all working ✅
+                VM: instance-20260322-175656 (Debian, GCP)
+
+Next Task     : 1) Screenshot lab outputs and submit Week A homework
+                   → curl -s localhost | head
+                   → curl -s localhost/healthz
+                   → curl -s localhost/metadata | jq
+                   → Web page in browser
+                   → Paste all into Google Docs
+                2) Fix Jenkins Built-In Node offline error
+                   → Manage Jenkins → Nodes → Built-In Node
+                   → Configure → Lower Free Temp Space to 200MB
+                   → Bring node back online
+
+After That    : Set up first Jenkins Pipeline/Job
+Then          : Connect Jenkins to GitHub repo
+Future        : Start AWS SAA — What is AWS & Cloud Computing
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 11: MY SETUP DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AWS Account ID  : 533972479438
+EC2 Instance ID : i-0bc0e5d8cd5428ec7
+EC2 Public IP   : 54.221.138.84 (CHANGES ON RESTART!)
+IAM Role        : JenkinsEC2Role
+Key File        : /Users/kamau/Downloads/jenkins-key.pem
+Jenkins URL     : http://YOUR_CURRENT_EC2_IP:8080
+AMI             : Amazon Linux 2023
+Instance Type   : t2.micro (free tier)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+READY? Please confirm you have read
+my context and continue from
+Section 10: Where I Left Off
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

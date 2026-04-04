@@ -1,0 +1,217 @@
+========================================
+SEIR-1 — WEEK 2 NOTES
+Cloud as a Trust Boundary
+Program: Systems Engineering & Identity Responsibility
+========================================
+
+---
+
+WHAT IS IT?
+-----------
+Week 2 builds on Week 1 by introducing where identity lives in a cloud system
+and how trust flows between components.
+
+GCP is the resource plane — it holds the infrastructure.
+Microsoft Entra ID (Azure AD) is the trust plane — it holds the identity authority.
+These are two separate systems that must be connected deliberately.
+
+A cloud is not just compute. It is a trust boundary.
+Everything that crosses that boundary must be verified.
+
+---
+
+KEY SERVICES & TERMS
+---------------------
+
+Resource Plane
+    The layer where infrastructure lives.
+    In SEIR-1: Google Cloud Platform (GCP).
+    This is where VMs, networks, storage, and services exist.
+    The resource plane does not decide who is trusted.
+    It only acts on what the identity plane tells it.
+
+Trust Plane
+    The layer where identity authority lives.
+    In SEIR-1: Microsoft Entra ID (formerly Azure Active Directory).
+    This is where users, groups, and app registrations are managed.
+    The trust plane decides who is authenticated and what claims they carry.
+
+Identity Provider (IdP)
+    The system that authenticates users and issues identity claims.
+    In SEIR-1: Microsoft Entra ID is the IdP.
+    GCP trusts Entra ID to tell it who a user is.
+
+Cloud Resource
+    Any service or infrastructure component in GCP.
+    Examples: Compute Engine VM, Cloud Storage bucket, BigQuery dataset.
+    Access to cloud resources is controlled by the trust plane.
+
+Trust Boundary
+    The line between what is inside your trusted system and what is outside.
+    Anything crossing the trust boundary must present verified identity.
+    Example: A user from outside GCP trying to access a GCP resource
+             must pass through the identity provider first.
+
+Federation
+    The technical mechanism that extends trust from one system to another.
+    Example: Entra ID federates into GCP so users authenticated by Microsoft
+             can access GCP resources without a separate GCP account.
+    Federation will be covered in depth in Weeks 7 and 9.
+
+Tenant
+    The top-level container in Microsoft Entra ID.
+    Everything in Entra ID belongs to a tenant.
+    A tenant represents an organization's identity boundary.
+    Will be covered in depth in Week 6.
+
+Trust Flow
+    The path identity claims travel from user to resource.
+    User → Identity Provider → Cloud Resource
+    Each arrow in that path is a trust relationship that must be configured.
+
+---
+
+HOW IT WORKS
+------------
+The fundamental flow in SEIR-1:
+
+Step 1 — User attempts to access a GCP resource.
+Step 2 — GCP checks: is this user authenticated by a trusted identity provider?
+Step 3 — The request is redirected to Microsoft Entra ID.
+Step 4 — Entra ID authenticates the user (proves who they are).
+Step 5 — Entra ID issues a token containing the user's identity claims.
+Step 6 — GCP receives the token and checks: is this user authorized for this resource?
+Step 7 — If authorized, access is granted. If not, access is denied.
+Step 8 — Every step is logged.
+
+Key insight:
+    GCP never authenticates the user directly.
+    It delegates that responsibility to Entra ID.
+    This is what federation means in practice.
+    GCP says: "I trust what Entra ID tells me about this person."
+
+Why two separate systems?
+    Microsoft specializes in identity management at enterprise scale.
+    GCP specializes in infrastructure and compute.
+    Separating these concerns means each system does what it does best.
+    It also means identity can be managed centrally across multiple clouds.
+
+---
+
+THINGS TO REMEMBER
+------------------
+1. GCP is the resource plane. Entra ID is the trust plane.
+   These are not interchangeable. They serve different purposes.
+
+2. Clouds are not just compute.
+   Every cloud resource sits behind a trust boundary.
+   Access is never assumed. It is always verified.
+
+3. The trust flow always goes: User → Identity Provider → Cloud Resource.
+   Skipping any step breaks the chain.
+
+4. Trust must be configured deliberately.
+   It does not exist by default between GCP and Entra ID.
+   Someone must set it up. Someone must maintain it.
+   When it breaks, access breaks for everyone who depends on it.
+
+5. Federation is powerful and fragile.
+   It allows one identity system to extend trust into another.
+   But it introduces a dependency. If the federation breaks, access breaks.
+
+6. The trust plane controls the resource plane.
+   You can have perfect infrastructure.
+   If the identity plane is misconfigured, no one gets in.
+   Or worse — the wrong people get in.
+
+7. No automation yet.
+   Week 2 is still conceptual.
+   Your artifact is a diagram, not a script.
+   Understand the model before you build it.
+
+---
+
+QUESTIONS I HAVE
+----------------
+(Add your own here as you study)
+
+- What happens if Entra ID goes down? Can users still access GCP?
+- Who is responsible for maintaining the federation configuration?
+- What is the difference between a tenant and a project?
+- Can a user belong to multiple tenants?
+- What does a token actually look like and what information does it carry?
+
+---
+
+REAL WORLD ANALOGY
+------------------
+Think of an international airport.
+
+GCP is the terminal — the infrastructure where everything happens.
+Entra ID is the passport control authority — it verifies who you are.
+Federation is the agreement between countries that says
+"we accept each other's passports."
+
+When you land at the terminal (GCP), you do not prove your identity
+to the terminal itself. You prove it to passport control (Entra ID).
+Passport control issues you a stamp (token).
+The terminal accepts the stamp and lets you through.
+
+If the passport control office is closed (Entra ID is down),
+no one gets into the terminal — even if the terminal is fully operational.
+
+If the agreement between countries breaks (federation misconfigured),
+your passport is no longer accepted — even if it is valid.
+
+The terminal does not care how good your passport is.
+It only cares whether the agreement says to trust it.
+
+---
+
+USE CASES
+---------
+Why this architecture matters in real systems:
+
+Single Sign-On (SSO)
+    A user logs into Microsoft once.
+    They can then access GCP resources without logging in again.
+    The trust between Entra ID and GCP makes this possible.
+
+Multi-Cloud Identity
+    A company uses AWS, GCP, and Azure.
+    Instead of managing separate user accounts in each cloud,
+    they manage one identity in Entra ID.
+    Federation extends that identity into each cloud.
+
+Centralized Access Control
+    When an employee leaves the company,
+    their account is disabled in Entra ID.
+    Access is immediately revoked across all federated systems.
+    One action. All clouds affected.
+
+Audit and Compliance
+    All identity events flow through Entra ID and GCP logs.
+    Auditors can see who accessed what, when, and from where.
+    This is only possible because identity flows through a central trust plane.
+
+---
+
+WEEK 2 ARTIFACT
+---------------
+Your deliverable: A trust diagram.
+
+Draw or diagram the following flow:
+    User → Identity Provider (Entra ID) → Cloud Resource (GCP)
+
+Your diagram must show:
+    1. Where authentication happens (Entra ID)
+    2. Where authorization happens (GCP)
+    3. The trust boundary between the two systems
+    4. What crosses the boundary (the token / identity claim)
+
+Format: Hand-drawn, markdown, or any diagramming tool.
+No automation. No code. Just the model.
+
+========================================
+END OF WEEK 2 NOTES
+========================================
