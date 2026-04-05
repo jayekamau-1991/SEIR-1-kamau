@@ -133,7 +133,6 @@ THINGS TO REMEMBER
 
 QUESTIONS I HAVE
 ----------------
-(Add your own here as you study)
 
 - What happens if Entra ID goes down? Can users still access GCP?
 - Who is responsible for maintaining the federation configuration?
