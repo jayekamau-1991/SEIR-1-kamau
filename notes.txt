@@ -2,3 +2,4 @@
 [2026-04-04 08:16:46] week 1 artifact complete
 [2026-04-04 08:17:01] week 1 artifact complete
 [2026-04-04 08:24:46] added all SEIR-1 deliverables
+[2026-04-05 07:29:13] week 2 notes added
