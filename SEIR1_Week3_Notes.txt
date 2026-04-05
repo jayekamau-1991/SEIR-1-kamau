@@ -1,0 +1,261 @@
+========================================
+SEIR-1 — WEEK 3 NOTES
+GCP Project & IAM Fundamentals
+Program: Systems Engineering & Identity Responsibility
+========================================
+
+---
+
+WHAT IS IT?
+-----------
+Week 3 moves from mental models into the actual structure of Google Cloud Platform.
+
+Before you can manage identity in GCP you need to understand how GCP organizes
+resources and who is allowed to act on them. That structure is built around
+three things: organizations, folders, and projects.
+
+Identity in GCP is enforced through IAM — Identity and Access Management.
+IAM is not the same as Entra ID. They serve different purposes.
+This week you learn the difference and why it matters.
+
+---
+
+KEY SERVICES & TERMS
+---------------------
+
+GCP Resource Hierarchy
+    GCP organizes everything in a hierarchy from top to bottom:
+        Organization → Folders → Projects → Resources
+
+    Organization
+        The top level. Represents your entire company in GCP.
+        All projects belong to the organization.
+        Policies set at this level affect everything below it.
+
+    Folders
+        Optional grouping layer between organization and projects.
+        Used to organize projects by team, department, or environment.
+        Example: A folder for Production, a folder for Development.
+        Policies set on a folder affect all projects inside it.
+
+    Projects
+        The primary unit of work in GCP.
+        Every resource (VM, storage bucket, database) lives inside a project.
+        Billing, APIs, and IAM permissions are managed at the project level.
+        Projects are blast radius boundaries.
+
+    Resources
+        The actual things you build — VMs, buckets, databases, networks.
+        Resources live inside projects.
+
+GCP IAM (Identity and Access Management)
+    The system that controls who can do what inside GCP.
+    IAM works by attaching roles to principals on specific resources.
+    GCP IAM is NOT the same as Entra ID.
+    GCP IAM = what you can do inside GCP.
+    Entra ID = who you are and whether you are trusted.
+
+Principal
+    Who the IAM policy applies to.
+    Can be:
+        - A Google account (human user)
+        - A service account (non-human, automated)
+        - A Google group
+        - A federated identity from Entra ID
+
+Role
+    A collection of permissions bundled together.
+    Instead of assigning individual permissions, you assign roles.
+    Three types:
+        Basic roles — Owner, Editor, Viewer (broad, avoid in production)
+        Predefined roles — specific to a service (e.g. Storage Admin)
+        Custom roles — you define exactly what permissions are included
+
+Binding
+    The connection between a principal and a role on a resource.
+    Example: "User A has the role Storage Viewer on Project B"
+    That is a binding.
+
+Service Account
+    A special type of identity used by machines, not humans.
+    Used by applications, VMs, and automation tools like Terraform.
+    Service accounts are NOT for humans to log in with.
+    They authenticate using keys or workload identity, not passwords.
+
+Policy Inheritance
+    IAM policies set at a higher level in the hierarchy
+    are inherited by everything below it.
+    Organization policy → inherited by all folders and projects
+    Folder policy → inherited by all projects in that folder
+    Project policy → inherited by all resources in that project
+    This is powerful and dangerous. A policy at the org level
+    affects everything in the organization.
+
+Least Privilege
+    Grant only the minimum permissions required to do the job.
+    Nothing more. This limits blast radius when something goes wrong.
+
+Blast Radius Boundary
+    Projects are the primary blast radius boundary in GCP.
+    If a permission is misconfigured in Project A,
+    it cannot affect Project B unless policies are set at a higher level.
+    This is why you separate environments into separate projects.
+
+---
+
+HOW IT WORKS
+------------
+When a principal tries to perform an action in GCP:
+
+1. GCP identifies the principal.
+   Who is making this request? A human, a service account, a federated identity?
+
+2. GCP checks the IAM policy for the resource being accessed.
+   Is there a binding that grants this principal permission to do this action?
+
+3. GCP checks policy inheritance.
+   If no binding exists at the resource level, it checks the project level.
+   Then the folder level. Then the organization level.
+
+4. If a matching binding is found — action is permitted.
+   If no matching binding is found — action is denied.
+
+5. Everything is logged in Cloud Audit Logs.
+
+The key point:
+    Deny by default. If there is no explicit Allow, the action is blocked.
+    You must explicitly grant access. Access is never assumed.
+
+---
+
+THINGS TO REMEMBER
+------------------
+1. Projects are blast radius boundaries.
+   Keep Production, Staging, and Development in separate projects.
+   A mistake in Development cannot reach Production if they are isolated.
+
+2. Service accounts are not for humans.
+   Never give a human a service account to log in with.
+   Service accounts are for automated systems and applications only.
+   Humans authenticate through Entra ID or their Google account.
+
+3. Avoid basic roles in production.
+   Owner, Editor, and Viewer are too broad.
+   Owner on a project means you can do anything — delete VMs, change billing, modify IAM.
+   Use predefined or custom roles with least privilege instead.
+
+4. Policy inheritance flows downward.
+   A role granted at the organization level applies to every project.
+   Be extremely careful what you assign at the top of the hierarchy.
+   Blast radius at the org level = entire company.
+
+5. GCP IAM and Entra ID are not the same.
+   Entra ID handles authentication — who you are.
+   GCP IAM handles authorization — what you can do.
+   Both must work correctly for access to succeed.
+
+6. Always check blast radius before adding or changing a role.
+   Ask: "If I grant this role here, what else does it affect?"
+   A role granted at the folder level affects every project in that folder.
+
+7. Logs are your evidence.
+   Cloud Audit Logs record every IAM change, every access attempt,
+   every permission grant and denial.
+   If you cannot find it in the logs, you cannot prove it happened.
+
+---
+
+QUESTIONS I HAVE
+----------------
+(Add your own here as you study)
+
+- What is the difference between a predefined role and a custom role in practice?
+- How do you recover if you accidentally remove your own IAM access to a project?
+- Can a service account be granted roles at the organization level?
+- What is workload identity and how does it replace service account keys?
+- How do you audit who has what roles across all projects?
+
+---
+
+REAL WORLD ANALOGY
+------------------
+Think of GCP's resource hierarchy like a company building.
+
+Organization = the entire company building
+Folders = floors of the building (Finance floor, Engineering floor)
+Projects = individual offices on each floor
+Resources = the desks, computers, and files inside each office
+
+IAM is the badge access system.
+
+A badge granted at the building level gets you into every floor and every office.
+A badge granted at the floor level gets you into every office on that floor.
+A badge granted at the office level gets you into only that office.
+
+A service account is like a robot that works in a specific office.
+It has a badge that only works for the tasks it needs to do.
+You would never give a human employee a robot badge to log in with.
+And you would never give the robot a master key to the whole building.
+
+Least privilege = give everyone only the badge they need for their job.
+Nothing more.
+
+---
+
+USE CASES
+---------
+- A DevOps engineer needs to deploy VMs in the Production project.
+  They are granted the Compute Instance Admin role on that project only.
+  They cannot touch the Finance project or the Development project.
+  Blast radius is contained to one project.
+
+- Terraform needs to create infrastructure in GCP.
+  A service account called terraform-service is created.
+  It is granted only the roles it needs — Storage Admin, Compute Admin.
+  Terraform authenticates as the service account using a JSON key.
+  No human credentials are stored anywhere.
+
+- A new team joins the organization.
+  A folder is created for their projects.
+  IAM policies are set at the folder level for that team.
+  All projects they create inside that folder inherit the policies automatically.
+
+- An engineer accidentally grants Owner to the wrong user at the project level.
+  Because it is at the project level, only that project is affected.
+  Other projects are not impacted.
+  The mistake is contained by the blast radius boundary.
+
+---
+
+WEEK 3 ARTIFACT
+---------------
+Two deliverables:
+
+1. GCP project created manually in the console
+   You should already have this — dusty-warrior-project
+
+2. IAM role mapping explanation
+   Written answer to:
+   "Map out who should have what role in your GCP project and why."
+   
+   Your answer must address:
+   - What role does your service account (terraform-service) have and why
+   - Why you did not use the Owner role for everything
+   - What blast radius boundary your project creates
+   - Why humans should not use service accounts to log in
+
+No automation yet. Manual only this week.
+
+---
+
+PROGRAM MANTRAS — WEEK 3 ADDITIONS
+-------------------------------------
+"Projects are blast radius boundaries. Treat them that way."
+"Service accounts are for machines. Not for humans."
+"Deny by default. Explicit allow only."
+"The higher the policy in the hierarchy, the larger the blast radius."
+"Least privilege is not a suggestion. It is the standard."
+
+========================================
+END OF WEEK 3 NOTES
+========================================
