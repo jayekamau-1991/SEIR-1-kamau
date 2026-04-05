@@ -1,9 +1,0 @@
-SEIR-1 Week 3 Artifact — IAM Role Mapping
-1. Current Role and Why It Is Risky
-terraform-service has the Owner role. This allows me to set up infrastructure, control access, use resources, monitor the project and manage billing. This is risky because if the JSON key is compromised, an attacker has full control of the project including deleting resources, modifying IAM, and running up charges.
-2. What Roles It Should Have Instead
-Terraform only needs to create and manage virtual machines, manage storage buckets, and maintain container images. Instead of Owner, terraform-service should only have Compute Admin, Storage Admin, and Artifact Registry Administrator. These roles give Terraform exactly what it needs and nothing more. This is least privilege.
-3. Blast Radius Boundary
-My project dusty-warrior-project is a blast radius boundary. Any mistakes or compromises inside this project stay contained in this project only and cannot affect other GCP projects. This is why Production, Staging, and Development should always be in separate projects so that any mistakes cannot reach the others.
-4. Why Humans Should Not Use Service Accounts
-Service accounts are designed for machines and automation, not humans. A human logging in with a service account bypasses normal authentication controls like MFA and conditional access policies. If the service account key is shared, there is no way to tell which human used it or when. Humans must authenticate through their own identity so every action is auditable and attributed to the individual human.
