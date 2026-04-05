@@ -1,74 +1,152 @@
-# SEIR-1 Study Notes
+# SEIR-1 Lab Submissions
 ## Systems Engineering & Identity Responsibility
+
+---
+
+## 2. Badges
+
+![Program](https://img.shields.io/badge/Program-SEIR--1-purple)
+![Lab 1](https://img.shields.io/badge/Lab%201-PASS-brightgreen)
+![Lab 2](https://img.shields.io/badge/Lab%202-PASS-brightgreen)
+![GCP](https://img.shields.io/badge/Platform-Google%20Cloud-blue)
+![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42BC?logo=terraform)
+![Nginx](https://img.shields.io/badge/Web%20Server-Nginx-009639?logo=nginx)
+![Gate](https://img.shields.io/badge/Gate%20Scripts-Passing-brightgreen)
+![Identity](https://img.shields.io/badge/Identity-Entra%20ID-0078D4)
+
+---
+
+## 3. Overview
+
+This repository contains all lab submissions for the SEIR-I program — an 18-month applied program focused on cloud infrastructure, identity, and federated trust.
 
 > "Infrastructure decides what can exist. Identity decides who is trusted."
 
----
-
-## About This Repository
-
-Personal study notes, artifacts, and deliverables for the SEIR-1 program — an 18-month applied program focused on cloud infrastructure, identity, and federated trust using **Google Cloud Platform** and **Microsoft Entra ID**.
+Each lab submission includes gate script results, screenshots, and supporting artifacts as proof of completion.
 
 ---
 
-## Program Stack
+## 4. Program Stack
 
 | Layer | Technology | Purpose |
 |---|---|---|
 | Resource Plane | Google Cloud Platform (GCP) | Infrastructure — VMs, networking, storage |
 | Trust Plane | Microsoft Entra ID | Identity — authentication, groups, federation |
 | Infrastructure as Code | Terraform | Reproducible deployments |
-| Identity Automation | PowerShell | Identity queries and automation |
-| Evidence & Logging | Python | Log analysis and validation |
+| Web Server | Nginx | Serves the SEIR-I Ops Panel |
+| Validation | Gate Scripts (bash) | Proves infrastructure is reachable and correct |
 
 ---
 
-## Weekly Progress
+## 5. Repository Structure
 
-| Week | Topic | Notes | Artifact | Status |
-|---|---|---|---|---|
-| Week 1 | What Identity Actually Controls | `SEIR1_Week1_Notes.txt` | `SEIR1_Week1_Artifact.md` | ✅ Complete |
-| Week 2 | Cloud as a Trust Boundary | `SEIR1_Week2_Notes.txt` | `SEIR1_Week2_Artifact.md` | ✅ Complete |
-| Week 3 | GCP Project & IAM Fundamentals | `SEIR1_Week3_Notes.txt` | `SEIR1_Week3_IAM_Artifact.md` | ✅ Complete |
-| Week 4 | Compute & Networking | `SEIR1_Week4_Notes.txt` | `SEIR1_Week4_Network_Diagram.png` | ✅ Complete |
-| Week 5 | GCP Logging & Evidence | — | — | ⬜ Pending |
-| Week 6 | Azure AD / Entra ID Core Concepts | — | — | ⬜ Pending |
-| Week 7 | Federation & SSO | — | — | ⬜ Pending |
-| Week 8 | PowerShell for Identity | — | — | ⬜ Pending |
-| Week 9 | Workforce Identity Federation | — | — | ⬜ Pending |
-| Week 10 | Controlled Access to GCP via Azure AD | — | — | ⬜ Pending |
-| Week 11 | Identity Failure & Recovery | — | — | ⬜ Pending |
-| Week 12 | Python for Evidence | — | — | ⬜ Pending |
-| Week 13 | PowerShell + Python Together | — | — | ⬜ Pending |
-| Week 14 | Pre-Lab Discipline | — | — | ⬜ Pending |
-| Week 15 | Mock Lab | — | — | ⬜ Pending |
-| Week 16 | Lab 1 Readiness Review | — | — | ⬜ Pending |
+```
+SEIR-1-labs/
+├── Lab 1 — Manual GCP VM
+│   ├── badge.txt                      # Gate result — GREEN
+│   ├── gate_result.json               # Full gate output
+│   └── SEIR-I OPS Panel-Node Online.png  # Homepage screenshot
+├── Lab 2 — Terraform GCP VM (coming)
+├── Lab 3 — (coming)
+├── Lab 4 — Multi-cloud VPN (coming)
+└── Lab 5 — GCP + Docker + Jenkins (coming)
+```
 
 ---
 
-## Lab Deliverables
+## 6. Lab Submissions
 
-| Lab | Description | Status |
-|---|---|---|
-| Lab 1 | Manual GCP VM — nginx, ops panel, gate script | ✅ Complete |
-| Lab 2 | Terraform GCP VM deployment | ✅ Complete |
-| Lab 3 | TBD | ✅ Complete |
-| Lab 4 | Multi-cloud VPN — AWS Tokyo to GCP Iowa with BGP | ✅ Complete |
-| Lab 5 | GCP + Docker + Jenkins | 🔄 In progress |
+### Lab 1 — Manual GCP VM Deployment
+
+**Status:** ✅ PASS
+
+**What was built:**
+- GCE VM deployed manually in GCP Console
+- Nginx web server serving the SEIR-I Ops Panel on port 80
+- Three endpoints validated: `/` , `/healthz`, `/metadata`
+- Gate script run and passed
+
+**Gate Results:**
+
+| Check | Result |
+|---|---|
+| Homepage reachable (HTTP 200) | ✅ PASS |
+| /healthz returns `ok` | ✅ PASS |
+| /metadata returns valid JSON | ✅ PASS |
+| metadata contains instance_name | ✅ PASS |
+| metadata contains region | ✅ PASS |
+
+**Artifacts:**
+- `badge.txt` — GREEN
+- `gate_result.json`
+- `SEIR-I OPS Panel-Node Online.png`
 
 ---
 
-## Core Program Mantras
+### Lab 2 — Terraform GCP VM Deployment
+
+**Status:** ✅ PASS
+
+**What was built:**
+- Same SEIR-I Ops Panel from Lab 1 deployed via Terraform
+- Firewall rule and VM created as code
+- Gate script validated all endpoints
+- plan.txt and apply output saved as evidence
+
+**Gate Results:**
+
+| Check | Result |
+|---|---|
+| / returns 200 | ✅ PASS |
+| /healthz returns `ok` | ✅ PASS |
+| /metadata returns valid JSON | ✅ PASS |
+| metadata contains region | ✅ PASS |
+| metadata contains VPC | ✅ PASS |
+| metadata contains subnet | ✅ PASS |
+
+---
+
+### Lab 3 — Coming Soon
+
+---
+
+### Lab 4 — Multi-Cloud VPN (AWS Tokyo → GCP Iowa)
+
+**Status:** ✅ Complete
+
+**What was built:**
+- Site-to-Site VPN between AWS ap-northeast-1 (Tokyo) and GCP us-central1 (Iowa)
+- BGP routing configured between clouds
+- Traffic routed across clouds over encrypted tunnel
+
+---
+
+### Lab 5 — GCP + Docker + Jenkins
+
+**Status:** 🔄 In Progress
+
+---
+
+## 7. Gate Script Philosophy
+
+> "Real engineers never say: 'It works on my screen.' They prove it."
+
+Every lab is validated by a gate script that checks:
+- The service is reachable
+- The health endpoint works
+- The metadata endpoint returns valid JSON
+- The deployed infrastructure identifies itself
+
+Gate scripts are sourced from:
+https://github.com/BalericaAI/SEIR-1
+
+---
+
+## 8. Program Mantras
 
 > "Infrastructure decides what can exist. Identity decides who is trusted."
 
-> "Identity changes are slow, deliberate, and high-impact."
-
 > "If it's not logged, it didn't happen."
-
-> "Shift left — chase failure to learn."
-
-> "AI is a bounded assistant. Never the decision maker."
 
 > "Projects are blast radius boundaries. Treat them that way."
 
@@ -78,30 +156,26 @@ Personal study notes, artifacts, and deliverables for the SEIR-1 program — an 
 
 ---
 
-## Tools Used
+## 9. References
 
-* **GCP Console** — cloud.google.com
-* **gcloud CLI** — command line interface for GCP
-* **Terraform** — infrastructure as code
-* **Docker** — local lab environment
-* **Jenkins** — CI/CD pipelines
-* **VS Code** — primary editor
-* **GitHub** — version control and evidence repository
-* **draw.io** — architecture and trust diagrams
-* **NotebookLM** — study and review
+- [SEIR-1 Class Repository](https://github.com/BalericaAI/SEIR-1)
+- [Google Cloud Platform Documentation](https://cloud.google.com/docs)
+- [Terraform Google Provider](https://registry.terraform.io/providers/hashicorp/google/latest/docs)
+- [Class 7.5 Notes](https://docs.google.com/document/d/1AXLe73cjz__BX4gmC6zgimqMlsiT4QREZwzQ7D70RTc)
 
 ---
 
-## GCP Project
+## 10. Author & Contributors
 
-| Property | Value |
+| Field | Details |
 |---|---|
-| Project ID | `dusty-warrior-project` |
-| Region | `us-central1` |
-| Zone | `us-central1-a` |
-| gcloud config | `class75` |
-| Service Account | `terraform-service` |
+| **Author** | Kamau |
+| **Group Leader** | Jacques |
+| **Group Name** | TKO Group |
+| **Program** | SEIR-I — Systems Engineering & Identity Responsibility |
+| **Version** | 1.0 |
+| **Date** | April 2026 |
 
 ---
 
-*SEIR-1 | 18-Month Applied Program | GCP Infrastructure + Microsoft Entra ID*
+*SEIR-I Lab Submissions | TKO Group | Gate Scripts Passing*
