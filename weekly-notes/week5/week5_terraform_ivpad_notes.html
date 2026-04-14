@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><head><title>Week 5 Terraform IVPAD</title></head>
+<body style="background:#0b0c10;color:#c5c6c7;font-family:monospace;padding:40px;">
+<h1 style="color:#66fcf1;">Week 5 — Terraform IVPAD Sequence</h1>
+<p>SEIR-1 | TKO Group | April 14, 2026</p>
+<h2 style="color:#45a29e;">IVPAD Steps</h2>
+<pre>1. INIT     - terraform init     - downloads plugins
+2. VALIDATE - terraform validate - checks files for errors  
+3. PLAN     - terraform plan     - previews what will be built
+4. APPLY    - terraform apply    - actually builds it
+5. DESTROY  - terraform destroy  - tears it all down</pre>
+<h2 style="color:#45a29e;">Things to Remember</h2>
+<pre>- Always run in order: init, validate, plan, apply, destroy
+- Variables with no default need -var flag
+- Never delete tfstate manually
+- gcloud auth application-default login needed for Terraform
+- Always destroy when done — stopped VMs still cost money</pre>
+</body></html>

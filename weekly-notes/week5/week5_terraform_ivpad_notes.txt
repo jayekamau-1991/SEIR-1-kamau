@@ -1,0 +1,48 @@
+TOPIC: Terraform IVPAD Sequence
+Date: April 14, 2026
+Program: SEIR-1 | Week 5 | TKO Group
+
+WHAT IS IT?
+Terraform is an Infrastructure as Code tool that lets you write code to build, change, and destroy cloud infrastructure automatically. The IVPAD sequence is the standard workflow every Terraform engineer follows.
+
+HOW IT WORKS — IVPAD
+1. INIT     - terraform init     - downloads plugins needed to talk to cloud provider
+2. VALIDATE - terraform validate - checks .tf files for syntax errors
+3. PLAN     - terraform plan     - previews what will be built, nothing created yet
+4. APPLY    - terraform apply    - actually builds the infrastructure
+5. DESTROY  - terraform destroy  - tears everything down cleanly
+
+KEY TERMS
+- Terraform: reads .tf files and talks to cloud providers (GCP, AWS, Azure)
+- provider.tf: tells Terraform which cloud to use
+- variables.tf: defines input variables
+- main.tf: core file describing what to build
+- terraform.tfstate: tracks what Terraform has already built
+
+THINGS TO REMEMBER
+- Always run in order: init, validate, plan, apply, destroy
+- Variables with no default must be supplied with -var flag
+- Never delete terraform.tfstate manually
+- gcloud auth application-default login required for Terraform (separate from gcloud auth login)
+- Always destroy lab resources when done — stopped VMs still charge for disk
+- Use | tee filename.txt to save output while seeing it on screen
+
+COMMANDS USED TODAY
+export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
+echo 'export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"' >> ~/.zshrc
+gcloud auth application-default login
+terraform init
+terraform validate
+terraform plan -var="project_id=kamau-lab4-2026" -var="student_name=Kamau" | tee plan_output.txt
+terraform apply -var="project_id=kamau-lab4-2026" -var="student_name=Kamau" -auto-approve
+terraform destroy -var="project_id=kamau-lab4-2026" -var="student_name=Kamau" -auto-approve
+date && hostname && whoami
+
+REAL WORLD ANALOGY
+Terraform is like a blueprint and construction crew combined.
+init = hire the crew, validate = check the blueprint, plan = preview the build, apply = build it, destroy = demolish cleanly.
+
+QUESTIONS I HAVE
+- What happens if you run apply without a plan?
+- Can Terraform manage multiple cloud providers in the same project?
+- What is the difference between tfstate and tfplan files?
