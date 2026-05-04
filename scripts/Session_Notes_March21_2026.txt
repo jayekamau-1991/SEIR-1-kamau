@@ -77,11 +77,4 @@ GitHub Repo:    SEIR-1-labs (private)
 Scripts folder: /Users/devopsstudy/Class_7_ZION/Class 7.5/SEIR-1-notes/scripts/
 Deliverables:   /Users/devopsstudy/Class_7_ZION/Class 7.5/Deliverables/
 
-----------------------------------------
-QUESTIONS I HAVE
-----------------------------------------
-- (Add any questions that came up today)
 
-========================================
-END OF SESSION NOTES — MARCH 21, 2026
-========================================
